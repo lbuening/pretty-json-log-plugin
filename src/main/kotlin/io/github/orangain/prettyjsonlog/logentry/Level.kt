@@ -10,6 +10,10 @@ enum class Level {
             // Use bunyan's level as a reference.
             // See: https://github.com/trentm/node-bunyan?tab=readme-ov-file#levels
             return when {
+                level = 5 -> DEBUG
+                level = 9 -> INFO
+                level = 13 -> WARN
+                level = 17 -> ERROR
                 level < 20 -> TRACE
                 level < 30 -> DEBUG
                 level < 40 -> INFO
@@ -39,7 +43,7 @@ enum class Level {
     }
 }
 
-private val levelKeys = listOf("level", "severity", "log.level", "@l", "Level")
+private val levelKeys = listOf("level", "severity", "log.level", "@l", "Level", "sev")
 
 fun extractLevel(node: JsonNode): Level? {
     return levelKeys.firstNotNullOfOrNull { node.get(it) }?.let { levelNode ->
