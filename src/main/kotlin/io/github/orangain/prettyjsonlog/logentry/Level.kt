@@ -11,10 +11,10 @@ enum class Level {
             // See: https://github.com/trentm/node-bunyan?tab=readme-ov-file#levels
             return when {
                 // Begin FTS Levels
-                level = 5 -> DEBUG
-                level = 9 -> INFO
-                level = 13 -> WARN
-                level = 17 -> ERROR
+                level == 5 -> DEBUG
+                level == 9 -> INFO
+                level == 13 -> WARN
+                level == 17 -> ERROR
                 // End FTS Levels
                 level < 20 -> TRACE
                 level < 30 -> DEBUG
